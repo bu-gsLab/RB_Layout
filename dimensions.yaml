@@ -3,7 +3,7 @@ RB3:
   short: 57.5 # mm
   gap:
     top: 0.25
-    bottom: 0.3
+    bottom: 0.35
     left: 0.3
     right: 0.3
 
@@ -12,7 +12,7 @@ RB6:
   short: 57.5 # mm
   gap:
     top: 0.25
-    bottom: 0.3
+    bottom: 0.35
     left: 0.3
     right: 0.3
 
@@ -21,7 +21,7 @@ RB7:
   short: 57.5 # mm
   gap:
     top: 0.25
-    bottom: 0.3
+    bottom: 0.35
     left: 0.3
     right: 0.3
 
