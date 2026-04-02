@@ -73,6 +73,7 @@ if __name__ == "__main__":
     argParser.add_argument('--tol', action='store', type=float, default=5, help="Tolerance to keepout radius (mm)")
     argParser.add_argument('--visualize', action='store_true', default=False, help="Visualize results in Pygame window")
     argParser.add_argument('--prune', action='store_true', help="Remove duplicates (two solutions with same first and last module that just mix up the order in between)")
+    argParser.add_argument('--under', action='store', default=5, help="Number of results under tolerance to show. Will show this number of results for each row type (M3 start, M6 start, M7 start)")
     args = argParser.parse_args()
 
     M3, M6, M7 = build_modules()
@@ -102,8 +103,10 @@ if __name__ == "__main__":
         sorted_M6_under = prune(sorted_M6_under)
         sorted_M7_under = prune(sorted_M7_under)
 
+    unum = args.under
+
     all_results = sorted_M3_results + sorted_M6_results + sorted_M7_results
-    all_results_under = sorted_M3_under[:10] + sorted_M6_under[:10] + sorted_M7_under[:10]
+    all_results_under = sorted_M3_under[:unum] + sorted_M6_under[:unum] + sorted_M7_under[:unum]
 
     if len(all_results + all_results_under) > 0:
         print_results(all_results, "Results (In tolerance)")
