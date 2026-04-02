@@ -73,7 +73,7 @@ if __name__ == "__main__":
     argParser.add_argument('--tol', action='store', type=float, default=5, help="Tolerance to keepout radius (mm)")
     argParser.add_argument('--visualize', action='store_true', default=False, help="Visualize results in Pygame window")
     argParser.add_argument('--prune', action='store_true', help="Remove duplicates (two solutions with same first and last module that just mix up the order in between)")
-    argParser.add_argument('--under', action='store', default=5, help="Number of results under tolerance to show. Will show this number of results for each row type (M3 start, M6 start, M7 start)")
+    argParser.add_argument('--under', action='store', type=int, default=5, help="Number of results under tolerance to show. Will show this number of results for each row type (M3 start, M6 start, M7 start)")
     args = argParser.parse_args()
 
     M3, M6, M7 = build_modules()
