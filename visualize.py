@@ -1,10 +1,11 @@
 import pygame
 import numpy as np
 
-W, H = 1600, 900
+W, H = 900, 900
 RB_COL = (180, 210, 240)
 PB_COL = (210, 240, 185)
-BG = (255, 255, 255)
+BG = (255, 255, 255)  
+GRAY = (50, 50, 50)
 
 def show(rows, row_index):
     pygame.init()
@@ -28,8 +29,11 @@ def show(rows, row_index):
         row = rows[idx]
         mods = row.modules
         x_off = W / 12
-        #scale = (W - x_off) / (sum(m.RB_long for m in mods))
-        scale = W / (row.R * 1.2)
+        DEE_R = 1185
+        inner_DEE_R = 302
+        scale = H / (DEE_R * 2.2)
+        DEE_R_scaled = DEE_R * scale
+        inner_DEE_R_scaled = inner_DEE_R * scale
 
         total_rb_width = sum(m.RB.total_long for m in mods) * scale
         x = W - x_off - total_rb_width
@@ -62,6 +66,12 @@ def show(rows, row_index):
         else:
             center = center1 if center1[1] < center2[1] else center2
         cx, cy = center
+        shift_x = W / 2 - (cx - 4*R / (3*np.pi))
+        shift_y = H / 2 - cy
+        cx += shift_x
+        cy += shift_y
+        x  += shift_x
+        y  += shift_y
 
 
         for m in mods[::-1]:
@@ -78,7 +88,12 @@ def show(rows, row_index):
             x += rw
 
         info = f"{idx+1}/{len(rows)}  {row}"
-        screen.blit(font.render(info, True, (80, 80, 80)), (20, 10))
+        screen.blit(font.render(info, True, (0, 0, 0)), (20, 10))
         pygame.draw.circle(screen, (255, 0, 0), (cx, cy), R, 2)
+        pygame.draw.circle(screen, GRAY, (int(cx), int(cy)), int(inner_DEE_R_scaled), 1)
+        pygame.draw.circle(screen, GRAY, (int(cx), int(cy)), int(DEE_R_scaled), 1)
+        pygame.draw.rect(screen, BG, (int(cx), int(cy - DEE_R_scaled), W - int(cx), 3*DEE_R_scaled))
+        pygame.draw.line(screen, GRAY, (int(cx), int(cy - inner_DEE_R_scaled)), (int(cx), int(cy - DEE_R_scaled)), 1)
+        pygame.draw.line(screen, GRAY, (int(cx), int(cy + inner_DEE_R_scaled)), (int(cx), int(cy + DEE_R_scaled)), 1)
         pygame.display.flip()
         clock.tick(60)
