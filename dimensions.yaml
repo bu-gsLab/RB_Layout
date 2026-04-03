@@ -45,17 +45,19 @@ PB2:
 
 DEE:
   origin_offset:
-    big_dim: 1071.25 # mm
-    small_dim: 5 # mm
+    big_dim: 999.05 # mm
+    small_dim: 28 # mm
   small_dim_additional_offset:
-    0: 5 # mm
-    8: 5 # mm
-    9: 5 # mm
-    10: 5 # mm
-    11: 5 # mm
-    12: 5 # mm
-    13: 5 # mm
-    14: 5 # mm
-    15: 5 # mm
-    16: 5 # mm
-    25: 5 # mm
+    0: 89.4 # mm
+    8: 89.4 # mm
+    9: 223.5 # mm
+    10: 268.2 # mm
+    11: 312.9 # mm
+    12: 357.6 # mm
+    13: 312.9 # mm
+    14: 268.2 # mm
+    15: 268.2 # mm
+    16: 134.1 # mm
+    17: 44.7 # mm
+    24: 89.4 # mm
+    25: 89.4 # mm
